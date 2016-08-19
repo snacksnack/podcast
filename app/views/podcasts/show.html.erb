@@ -10,72 +10,39 @@
         <a href="<%= @podcast.stitcher %>" class="subscribe_link">Stitcher</a>
       <% end %>
       <% unless @podcast.podbay.blank? %>
-        <a href="<%= @podcast.podbay %>" class="subscribe_link">Podbay</a>
+        <a href="<%= @podcast.podbay %>" class="subscribe_link">PodBay</a>
       <% end %>
-        
     </div>
   </div>
-  
+
   <div id="breadcrumb">
     <%= link_to podcasts_path do %>
       All Podcasts
       <span>/</span>
-      The RocketShip Podcast
-    <% end %> 
+      <%= @podcast.title %>
+    <% end %>
   </div>
 
   <div id="episodes">
     <div class="wrapper_skinny">
       <ul class="cf">
-        <li class="cf">
-          <div class="episode_thumbnail">
-            <a href="podcast_epidsode.html">
-              <img src="images/narwhal1.jpg" alt="nice photo.">
-            </a>
-          </div>
-          <div class="episode_overview">
-            <h2><a href="podcast_episode.html">Building Products as a Life</a></h2>
-            <p class="description">
-              Ben Howdle joins us to talk about his experience building products and apps, and leaving his full-time job to pursue that dream.
-            </p>
-          </div>
-        </li>
-
-        <li class="cf">
-          <div class="episode_thumbnail">
-            <a href="podcast_episode.html">
-              <img src="images/narwhal2.jpg" alt="nice photo.">
-            </a>
-          </div>
-          <div class="episode_overview">
-            <h2><a href="podcast_episode.html">You Don't Know Jack</a></h2>
-            <p class="description">
-              Ashley Baxter joins us to talk about creating an insurance company and all things named Jack.
-            </p>
-          </div>
-        </li>
-
-        <li class="cf">
-          <div class="episode_thumbnail">
-            <a href="podcast_epidsode.html">
-              <img src="images/narwhal3.jpg" alt="nice photo.">
-            </a>
-          </div>
-          <div class="episode_overview">
-            <h2><a href="podcast_episode.html">Apps, Business, Numbers and Dollars</a></h2>
-            <p class="description">
-              We talk money, numbers and the realities of trying to make a living making software.
-            </p>
-          </div>
-        </li>
+        <% @episodes.each do |episode| %>
+          <li class="cf">
+            <div class="episode_thumbnail">
+              <a href="#">
+                <!--<!%= image_tag episode.episode_thumbnail.url(:medium) %> -->
+                temporary placeholder
+              </a>
+            </div>
+            <div class="episode_overview">
+              <h2><%= link_to episode.title, podcast_episode_path(@podcast, episode) %></h2>
+              <p class="description"><%= truncate(episode.description, length: 160) %></p>
+            </div>
+          </li>
+        <% end %>
       </ul>
+
+      <!%= will_paginate @episodes, previous_label: "Previous", next_label: "Next" %>
     </div>
   </div>
-</div>
-
-<div class="pagination">
-  <span class="previous_page disabled">Previous</span>
-  <em class="current">1</em>
-  <a href="#">2</a>
-  <a href="#" class="next_page">Next</a>
 </div>
