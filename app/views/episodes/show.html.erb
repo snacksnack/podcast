@@ -28,7 +28,7 @@
 
   <div id="episode_content">
     <div class="wrapper_skinny">
-      <img src="images/narwhal3.jpg" alt="Narwhal" class="current_episode_thumbnail">
+      <%= image_tag @episode.episode_thumbnail.url(:medium), class: "current_episode_thumbnail" %>
       <h2><%= @episode.title %></h2>
       <p class="description">
         <%= @episode.description %>
@@ -42,8 +42,8 @@
         <% @episodes.each do |episode| %>
           <li class="cf">
             <div class="episode_thumbnail">
-              <a href="#">
-                <img src="images/narwhal1.jpg" alt="nice photo.">
+              <a href="episode.html">
+                <%= image_tag episode.episode_thumbnail.url(:medium) %>
               </a>
             </div>
             <div class="episode_overview">

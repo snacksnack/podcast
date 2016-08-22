@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812114336) do
+ActiveRecord::Schema.define(version: 20160821234941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,12 @@ ActiveRecord::Schema.define(version: 20160812114336) do
     t.string   "title"
     t.text     "description"
     t.integer  "podcast_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "episode_thumbnail_file_name"
+    t.string   "episode_thumbnail_content_type"
+    t.integer  "episode_thumbnail_file_size"
+    t.datetime "episode_thumbnail_updated_at"
   end
 
   add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id", using: :btree
@@ -44,6 +48,10 @@ ActiveRecord::Schema.define(version: 20160812114336) do
     t.string   "itunes"
     t.string   "stitcher"
     t.string   "podbay"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
   end
 
   add_index "podcasts", ["email"], name: "index_podcasts_on_email", unique: true, using: :btree
