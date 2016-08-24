@@ -31,7 +31,7 @@ group :development do
   gem 'spring'
 
   group :production do
-    gem 'rmagick', '~> 2.16'
+    gem 'rmagick'
   end
 end
 
