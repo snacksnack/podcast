@@ -1,5 +1,5 @@
 Paperclip.options[:content_type_mappings] = {
-  :audio => 'application/octet-stream',
-  :mp3 => 'application/mp3',
-  :mpeg => 'application/mp3'
+  #:audio => 'application/octet-stream',
+  :mp3 => 'application/octet-stream',
+  :mpeg => 'application/octet-stream'
 }
