@@ -10,11 +10,12 @@
         <a href="<%= @podcast.stitcher %>" class="subscribe_link">Stitcher</a>
       <% end %>
       <% unless @podcast.podbay.blank? %>
-        <a href="<%= @podcast.podbay %>" class="subscribe_link">PodBay</a>
+        <a href="<%= @podcast.podbay %>" class="subscribe_link">Podbay</a>
       <% end %>
+        
     </div>
   </div>
-
+  
   <div id="breadcrumb">
     <%= link_to podcasts_path do %>
       All Podcasts
@@ -22,16 +23,16 @@
       <%= link_to @podcast.title, podcast_path(@podcast) %>
       <span>/</span>
       <%= @episode.title %>
-    <% end %>
+    <% end %> 
   </div>
 
   <div id="episode_content">
     <div class="wrapper_skinny">
       <%= image_tag @episode.episode_thumbnail.url(:medium), class: "current_episode_thumbnail" %>
       <h2><%= @episode.title %></h2>
-      <p class="description"><%= @episode.description %></p>
-
-      <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+      <p class="description">
+        <%= @episode.description %>
+      </p>
       <div id="jp_container_1" class="jp-audio">
         <div class="jp-type-single">
           <div class="jp-gui jp-interface">
@@ -63,7 +64,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -78,8 +78,10 @@
               </a>
             </div>
             <div class="episode_overview">
-              <h2><%= link_to episode.title, podcast_episode_path(@podcast, episode) %></h2>
-              <p class="description"><%= truncate(episode.description, length: 160) %></p>
+              <h2><%= link_to episode.title, podcast_episode_path(@podcast, @episode) %></h2>
+              <p class="description">
+                Ben Howdle joins us to talk about his experience building products and apps, and leaving his full-time job to pursue that dream.
+              </p>
             </div>
           </li>
         <% end %>
